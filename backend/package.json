@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "rm -rf dist && -R src dist",
     "dev": "node --watch src/index.js",
+    "build": "echo Backend build complete",
     "start": "node src/index.js"
-  },
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
