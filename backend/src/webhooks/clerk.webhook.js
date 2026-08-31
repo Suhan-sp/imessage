@@ -2,6 +2,7 @@ import express from 'express';
 import User from '../models/User.js';
 import {verifyWebhook} from '@clerk/backend/webhooks';
 
+const router = express.Router();
 
 router.post("/", async (req, res) => {
   try {
