@@ -3,6 +3,7 @@ import http from "http";
 import { Server } from "socket.io";
 
 const app = express();
+
 const server = http.createServer(app);
 
 const allowedOrigin = process.env.FRONTEND_URL || "https://localhost:5173";
