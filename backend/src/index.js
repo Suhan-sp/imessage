@@ -17,8 +17,9 @@ import job from "./lib/cron.js";
 import clerkWebhook from "./webhooks/clerk.webhook.js";
 import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js"
+import { server } from "./lib/socket.js";
 
-const app = express();
+
 const FRONTEND_URL = process.env.FRONTEND_URL;
 const PORT = process.env.PORT || 3000;
 
@@ -52,7 +53,7 @@ async function startServer() {
     try {
         await connectDB();
 
-        app.listen(PORT, () => {
+        server.listen(PORT, () => {
             console.log("MongoDB connected successfully");
             console.log("Server is running on port", PORT);
 
