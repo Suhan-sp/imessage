@@ -22,10 +22,10 @@ io.on("connection" ,(socket) => {
     if(userId) userSocketMap[userId] = socket.id
     
     //io.emit sends event to everyone - broadcast
-    io.emit("getonlineUsers", Object.keys(userSocketMap));
+    io.emit("getOnlineUsers", Object.keys(userSocketMap));
 
     socket.on("disconnect", () => {
-        if(userId) delete userSocketMap[userId];
+        if(userId && userSocketMap[userId] === socket.id) delete userSocketMap[userId];
         io.emit("getOnlineUsers", Object.keys(userSocketMap));
     });
 });
