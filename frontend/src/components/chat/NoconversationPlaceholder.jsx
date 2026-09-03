@@ -9,6 +9,7 @@ export function NoConversationPlaceholder() {
       >
         <MessageCircleIcon className="size-10 text-accent" strokeWidth={1.25} />
       </div>
+      
       <div className="max-w-76 space-y-2">
         <h2 className="text-[16px] font-semibold tracking-tight sm:text-[17px]">
           Select a chat to start
