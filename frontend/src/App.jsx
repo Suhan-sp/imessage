@@ -1,16 +1,22 @@
-import { Button } from '@heroui/react';
-import { ThemeProvider } from './context/ThemeContext';
-import { WallpaperProvider } from './context/WallpaperContext';
-import ChatPage from './pages/styles/ChatPage';
-import AuthPage from './pages/styles/AuthPage';
-import { Navigate, Routes, Route } from 'react-router';
-import { useAuth } from '@clerk/react';
+import { WallpaperProvider } from "./context/WallpaperContext";
+import { ThemeProvider } from "./context/ThemeContext";
+import { Navigate, Route, Routes } from "react-router";
+import ChatPage from "./pages/ChatPage";
+import AuthPage from "./pages/AuthPage";
+import { useAuth } from "@clerk/react";
+import PageLoader from "./components/PageLoader";
+import { useEffect } from "react";
 
 function App() {
-
   const { isSignedIn, isLoaded } = useAuth();
 
-   return (
+  // option 1
+  // const { checkAuth, isCheckingAuth, clearAuth } = useAuthStore();
+
+  // option 2 - better for performance
+
+
+  return (
     <ThemeProvider>
       <WallpaperProvider>
         <Routes>
