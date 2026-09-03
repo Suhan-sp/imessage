@@ -11,7 +11,7 @@ const allowedOrigin = process.env.FRONTEND_URL || "https://localhost:5173";
 const io = new Server(server, { cors:{ origin: [allowedOrigin]}});
 
 function getReceiverSocketId(userId){
-    return userSOcketMap[userId];
+    return userSocketMap[userId];
 }
 
 const userSocketMap = {};
