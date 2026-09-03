@@ -9,17 +9,23 @@ import { MessageSquareIcon, UsersIcon } from "lucide-react";
 import { ConversationRow } from "./ConversationRow";
 
 function mapUserForList(user, onlineUsers) {
+  const displayName =
+    user.fullName ||
+    user.username ||
+    user.email?.split("@")[0] ||
+    "User";
+
   return {
     conversationId: user._id,
     id: user._id,
-    name: user.fullName,
+    name: displayName,
     avatarUrl: user.profilePic,
-    initials: getInitials(user.fullName),
+    initials: getInitials(displayName),
     isOnline: onlineUsers.includes(user._id),
     peer: {
-      name: user.fullName,
+      name: displayName,
       avatarUrl: user.profilePic,
-      initials: getInitials(user.fullName),
+      initials: getInitials(displayName),
       isOnline: onlineUsers.includes(user._id),
     },
   };
