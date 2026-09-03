@@ -32,7 +32,7 @@ export const useAuthStore = create((set, get) => ({
   },
 
   connectSocket: (user) => {
-    if (!user || get().socket?.connected) return;
+    if (!user || get().socket?.active) return;
 
     const socket = io(BASE_URL, { query: { userId: user._id } });
 
@@ -41,11 +41,19 @@ export const useAuthStore = create((set, get) => ({
     socket.on("getOnlineUsers", (userIds) => {
       set({ onlineUsers: userIds });
     });
+
+    socket.on("connect", () => {
+      set({ socket });
+    });
+
+    socket.on("disconnect", () => {
+      set({ onlineUsers: [] });
+    });
   },
 
   disconnectSocket: () => {
     const socket = get().socket;
-    if (socket?.connected) socket.disconnect();
+    if (socket) socket.disconnect();
     set({ socket: null });
   },
 }));
